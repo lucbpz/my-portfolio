@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "vue": "^2.5.16",
+    "vue-burger-menu": "^2.0.1",
     "vue-class-component": "^6.0.0",
+    "vue-fraction-grid": "^1.1.0",
     "vue-property-decorator": "^6.0.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-typer": "^1.2.0",
+    "vuetify": "^1.5.7"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",
@@ -25,6 +29,7 @@
     "chai": "^4.1.2",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "vue-particles": "^1.0.9",
     "vue-template-compiler": "^2.5.13"
   },
   "browserslist": [
