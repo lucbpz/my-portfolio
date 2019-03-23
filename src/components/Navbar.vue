@@ -1,12 +1,13 @@
 <template>
   <div>
-    <nav class="navbar" v-bind:class="{ navbarScrolled: scrolled }">
+    <nav class="navbar" :style="$store.getters['theme']" v-bind:class="{ navbarScrolled: scrolled }">
         <div class="navbar-full">
             <div class="navbar-full__title">
                 <h1 class="site-title">{{title}}</h1>
             </div>
             <div class="navbar-full__menu">
                 <ul class="nav-list">
+                    <li class="nav-item"><div @click="toggleTheme">{{isDark ? 'Light theme' : 'Dark theme'}}</div></li>
                     <li class="nav-item">About Me</li>
                     <li class="nav-item">Work</li>
                     <li class="nav-item">Contact</li>
@@ -26,24 +27,44 @@
 <script lang="js">
 // import { Component, Vue } from "vue-property-decorator";
 import { Slide } from 'vue-burger-menu'  // import the CSS transitions you wish to use, in this case we are using `Slide`
-
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   components: {},
   data() {
     return {
       title: "<MyPortfolio/>",
-      scrolled: false
+      scrolled: false,
+      dark: false,
     };
   },
   components: {
       Slide,
   },
+  computed: {
+    ...mapGetters([
+      'theme',
+      'isDark',
+    ]),
+  },
   methods: {
     handleScroll: function() {
       this.scrolled = window.scrollY > 400;
+    },
+    ...mapMutations([
+      'setLightTheme',
+      'setDarkTheme'
+    ]),
+    toggleTheme: function() {
+      if (this.isDark) this.setLightTheme();
+      else this.setDarkTheme();
+      this.renderComponent = false;
+      setTimeout(() => {
+        this.renderComponent = true;
+      });
     }
   },
   created() {
+    this.dark = this.isDark;
     window.addEventListener("scroll", this.handleScroll.bind(this));
   },
   destroyed() {
@@ -52,13 +73,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .navbar {
   position: absolute;
   // width: 96vw;
   // flex-direction: row;
   transition: all 1s linear;
-  color: #fafafa;
+  // color: #fafafa;
   height: 10vh;
   // width: 100vw;
   // align-items: center;
@@ -102,7 +123,7 @@ export default {
     transition: all 1s linear;
   }
   @media only screen and (max-width: 480px) {
-    width: 91vw;
+    width: 90vw;
     .navbar-full {
       display: none;
     }

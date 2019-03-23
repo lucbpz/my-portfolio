@@ -9,8 +9,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+<script lang="js">
 import Navbar from "@/components/Navbar.vue";
 import Landing from "@/components/Landing.vue";
 
@@ -18,13 +17,13 @@ import Landing from "@/components/Landing.vue";
 // import Projects from "@/components/Projects.vue";
 // import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
-@Component({
+export default {
+  name: 'home',
   components: {
     Navbar,
     Landing,
     // AboutMe,
     // Projects
   }
-})
-export default class Home extends Vue {}
+}
 </script>

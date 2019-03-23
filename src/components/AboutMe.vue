@@ -77,7 +77,7 @@ img {
   text-transform: capitalize;
   font-size: 45px;
   margin-bottom: 30px;
-  color: #fafafa;
+//   color: #fafafa;
   letter-spacing: 2px;
   width: 100%;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
-    <div class="main-title">
-      <div class="typer">
+  <div class="about" :style="$store.getters['theme']">
+    <div class="main-title" :style="$store.getters['theme']">
+      <div class="typer" :dark="$store.getters['isDark']">
         <vue-typer
           :text=nameAndQuote
           :repeat=repeat
@@ -16,13 +16,13 @@
           caret-animation='smooth'
         ></vue-typer>
       </div>
-      <vue-particles class="particles"
-              color="#dedede"
+      <!-- <vue-particles v-if="renderComponent" class="particles"
+              :color="theme.color"
               :particleOpacity="0.7"
               :particlesNumber="80"
               shapeType="circle"
               :particleSize="4"
-              linesColor="#dedede"
+              :linesColor="theme.color"
               :linesWidth="1"
               :lineLinked="true"
               :lineOpacity="0.4"
@@ -33,14 +33,14 @@
               :clickEffect="true"
               clickMode="push"
             >
-      </vue-particles>
+      </vue-particles> -->
     </div>
   </div>
 </template>
 
 <script lang="js">
 import { VueTyper } from "vue-typer";
-
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   components: {
     VueTyper,
@@ -53,33 +53,47 @@ export default {
         "I'm a musician",
         "I build user centered stuff"
       ],
-      repeat: Infinity,
-      scrolled: false
+      repeat: 0,
+      scrolled: false,
     };
-  }
+  },
+  computed: {
+    ...mapGetters([
+      'theme',
+      'isDark',
+    ]),
+    
+  },
 };
 </script>
 
-<style scoped lang="scss">
-.about {
-  background: #1a222c;
-}
-
+<style lang="scss">
 .main-title {
-  color: #fff;
   display: grid;
   grid-template-rows: [row1-start] 100% [row1-end];
   grid-template-columns: [column1-start] 100% [column1-end];
-  height: 100vh;;
+  height: 100vh;
   .typer {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 1;
-
+    // z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &[dark] {
+      *.typed {
+        color: #fafafa;
+      }
+    }
+
+    &:not([dark]) {
+      *.typed {
+        color: #1a222c;
+      }
+    }
   }
 
   .particles {
@@ -89,8 +103,8 @@ export default {
     grid-row-end: 1;
   }
   h2 {
-    color: #fff;
     font-size: 4rem;
+    color: red;
     font-family: "Montserrat", sans-serif;
     margin: 0;
     @media (max-width: 767px) {
@@ -110,7 +124,6 @@ export default {
   /* Styles for the vue-typer container
      e.g. font-family, font-size  */
   font-family: "Montserrat", sans-serif;
-  // color: #fafafa !important;
   font-size: 80px;
   font-weight: 900;
 
@@ -122,12 +135,13 @@ export default {
     /* For desktop: */
     font-size: 50px;
   }
+
 }
 
 .btn {
   display: inline-block;
-  color: #1a222c;
-  background: #fff;
+  // color: #1a222c;
+  // background: #fff;
   padding: 15px 25px;
   border: 1px solid #333;
   font-size: 14px;
@@ -140,8 +154,10 @@ export default {
 }
 
 .btn:hover {
-  background: #1a222c;
-  color: #ededed;
+  // background: #1a222c;
+  // color: #ededed;
   text-decoration: none;
 }
+
+
 </style>
