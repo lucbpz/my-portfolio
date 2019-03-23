@@ -15,9 +15,13 @@
             </div>
         </div>
         <Slide class="navbar-responsive">
-          <a id="home" href="#">
+          <!-- <a id="home" href="#">
             <span>Home</span>
-          </a>
+          </a> -->
+          <a class="nav-item"><div @click="toggleTheme">{{isDark ? 'Light theme' : 'Dark theme'}}</div></a>
+          <a class="nav-item">About Me</a>
+          <a class="nav-item">Work</a>
+          <a class="nav-item">Contact</a>
         </Slide>
     </nav>
   </div>
@@ -81,10 +85,10 @@ export default {
   transition: all 1s linear;
   // color: #fafafa;
   height: 10vh;
-  // width: 100vw;
+  width: 100vw;
   // align-items: center;
   // justify-content: flex-start;
-  padding: 16px;
+  // padding: 16px;
 
   .navbarScrolled {
     background: #1a222c;
@@ -99,7 +103,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    padding: 0 16px;
 
 
     .navbar-full__title {
@@ -117,13 +121,17 @@ export default {
       }
     }  
   }
+
+  .navbar-responsive {
+    overflow: hidden;
+    white-space: nowrap;
+  }
   li {
     list-style: none;
     display: inline;
     transition: all 1s linear;
   }
   @media only screen and (max-width: 480px) {
-    width: 90vw;
     .navbar-full {
       display: none;
     }
@@ -132,7 +140,6 @@ export default {
     }
   }
   @media only screen and (min-width: 480px) {
-    width: 96vw;
     .navbar-responsive {
       display: none;
     }
