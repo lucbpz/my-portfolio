@@ -48,10 +48,11 @@ export default {
   data() {
     return {
       nameAndQuote: [
-        "Hi, I'm Lucas Bernalte",
-        "I'm a Full Stack Developer",
+        "Hi, I'm Lucas \nBernalte",
+        "I'm a Full Stack \nDeveloper",
         "I'm a musician",
-        "I build user centered stuff"
+        "I build user \ncentered stuff",
+        "Feel free to \nmessage me! \n✉️"
       ],
       repeat: 0,
       scrolled: false,
@@ -81,8 +82,15 @@ export default {
     // z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    white-space: nowrap;
+    @media only screen and (max-width: 480px) {
+      justify-content: flex-start;
+      text-align: left;
+    }
 
+    @media only screen and (min-width: 480px) {
+      justify-content: center;
+    }
     &[dark] {
       *.typed {
         color: #fafafa;
@@ -128,12 +136,13 @@ export default {
   font-weight: 900;
 
   @media only screen and (max-width: 480px) {
-    font-size: 30px;
+    font-size: 48px;
+    margin-left: 16px;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
     /* For desktop: */
-    font-size: 50px;
+    font-size: 64px;
   }
 
 }
