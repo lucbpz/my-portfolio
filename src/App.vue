@@ -17,8 +17,9 @@ export default {
 
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Avenir", "Helvetica", "Arial", "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
