@@ -13,7 +13,7 @@
 <script lang="js">
 import Navbar from "@/components/Navbar.vue";
 import Landing from "@/components/Landing.vue";
-import toList from '@/hocs/toList';
+// import toList from '@/hocs/toList';
 // import AboutMe from "@/components/AboutMe.vue";
 import Projects from "@/components/Projects.vue";
 import Project from "@/components/Project.vue";
