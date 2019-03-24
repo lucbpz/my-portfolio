@@ -18,7 +18,7 @@ import Landing from "@/components/Landing.vue";
 import Projects from "@/components/Projects.vue";
 import Project from "@/components/Project.vue";
 // import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
+import FirebaseService from "@/services/firebase";
 // const Projects = toList(Project);
 
 export default {
@@ -30,17 +30,10 @@ export default {
     Projects
   },
   data: () => ({
-    projects: [{
-      id: 1,
-      imgSrc: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      title: "title",
-      description: "description"
-    },{
-      id: 2,
-      imgSrc: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      title: "title",
-      description: "description"
-    }]
-  })
+    projects: []
+  }),
+  async created() {
+    this.projects = await FirebaseService.getProjects();
+  }
 }
 </script>

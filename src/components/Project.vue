@@ -6,8 +6,9 @@ const Project = ( {data} ) => {
         <img src={data.imgSrc} />
       </div>
       <div class="project-text">
-        <h3>{data.title}</h3>
+        <h3>{data.name}</h3>
         <p>{data.description}</p>
+        <p>{data.company}</p>
         <div>Details -></div>
       </div>
     </div>
